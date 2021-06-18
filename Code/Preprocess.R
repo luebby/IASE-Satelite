@@ -2,7 +2,7 @@
 # Code for data preprocssing
 # The raw files are not provided due to data 
 # privacy reasons. 
-# This code is only provided for transparancy reasons
+# This code is only provided for transparency reasons
 ######################################################
 
 library(dplyr)
