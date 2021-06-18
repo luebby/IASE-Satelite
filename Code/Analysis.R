@@ -9,7 +9,7 @@ nrow(Conclusion)
 tally( ~ type, data = Conclusion)
 
 # Demographics
-tally( ~gender, data = Conclusion, format = "proportion")
+tally( ~ gender, data = Conclusion, format = "proportion")
 
 # For data privacy reasons not provided in public data.
 # favstats( ~ age, data = Conclusion)
