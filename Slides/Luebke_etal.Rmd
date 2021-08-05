@@ -1,0 +1,293 @@
+---
+title: "Draw (Causal) Conclusions from Data – Some Evidence"
+subtitle: "IASE 2021 Satellite Conference"  
+author: 
+  - "Karsten Lübke, Bianca Krol, Sandra Sülzenbrück"
+date: "23rd June 2021"
+output:
+  xaringan::moon_reader:
+    includes:
+      after_body: insert-logo.html
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      ratio: '16:9'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(out.width="80%", fig.align = "center")
+
+# remotes::install_github("mitchelloharawild/icons")
+# download_fontawesome()
+
+library(icons)
+library(knitr)
+library(ggplot2)
+
+theme.fom <- theme_classic(22*1.04)
+theme.fom <- theme.fom
+theme_set(
+  theme.fom  
+)
+
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+
+style_xaringan(
+  header_color = "#00998A",
+  inverse_background_color = "#00998A",
+  footnote_font_size = "0.7rem",
+  background_color = "#f3f3f3",
+  base_font_size = "24px",
+  text_font_size = "1.2rem",
+  colors =c(
+    grey = "#5E6974",
+    green = "#0F710B",
+    red = "#F34213",
+    blue = "#0000FF",
+    orange = "#FF8811",
+    violet = "#DA70D6",
+    purple = "#7A378B",
+    olive = "#808000")
+  )
+```
+
+
+```{r dags, include=FALSE}
+library(ggdag)
+
+# DAGs in Motivation
+co <- data.frame(x=c(0,0,1), y=c(0,1,0), name=c("X", "Z", "Y")) 
+DAG_Mot1 <- dagify(Z ~ X,
+                   Y ~ X,
+                   Y ~ Z, coords = co) %>% 
+  ggdag(node_size = 15, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(12, "pt"), type = "closed"))  + 
+  geom_text(label = "X - Gender\nZ - Management\nY - Salary", 
+            hjust = 1, vjust = 1,
+            x = 1, y = 1, size = 7, color = "darkgrey") +
+  labs(title = "Management in the middle of a chain: X -> Z -> Y")
+
+DAG_Mot2 <- dagify(X ~ Z,
+                   Y ~ X,
+                   Y ~ Z, coords = co) %>% 
+  ggdag(node_size = 15, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(12, "pt"), type = "closed"))  + 
+  geom_text(label = "X - Lifestyle\nZ - Management\nY - Salary", 
+            hjust = 1, vjust = 1,
+            x = 1, y = 1, size = 7, color = "darkgrey") +
+  labs(title = "Management in the middle of a fork: X <- Z -> Y")
+```
+
+```{r data, include=FALSE}
+library(tidyverse)
+library(mosaic)
+
+Conclusion <- read.csv2("../Data/Conclusion.csv")
+```
+
+
+
+class: center, inverse, middle
+
+# Intro
+
+---
+
+## Gender Pay Gap (I/II)
+
+Payment in fictitious company:
+
+
+|                    | Female      | Male        |
+|--------------------|-------------|-------------|
+| **Non-management** | 3100 (n=80) | 3000 (n=60) |
+| **Management**     | 5850 (n=20) | 5500 (n=40) |
+
+
+.footnote[Example adopted from [Paul Hünermund](https://youtu.be/6ZwarKVgAzQ).]
+
+---
+
+## Gender Pay Gap (II/II)
+
+What do you think is the magnitude of the gender pay gap for women in this company?
+
+<br>
+
+.olive[**A**]: On average: $\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350$
+
+.olive[**B**]: Adjusted for job: $\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175$
+
+---
+
+## Lifestyle Pay Gap (I/II)
+
+Payment in fictitious company:
+
+
+|                    | Healthy Lifestyle | Unhealthy Lifestyle |
+|--------------------|-------------------|---------------------|
+| **Non-management** | 3100 (n=80)       | 3000 (n=60)         |
+| **Management**     | 5850 (n=20)       | 5500 (n=40)         |
+
+.footnote[Example adopted from [Paul Hünermund](https://youtu.be/6ZwarKVgAzQ).]
+
+---
+
+## Lifestyle Pay Gap (II/II)
+
+
+What do you think is the magnitude of the healthy pay gap in this company?
+
+<br> 
+
+.olive[**A**]: On average: $\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350$
+
+.olive[**B**]: Adjusted for job: $\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175$
+
+---
+
+## Different Data Stories
+
+Directed Acyclic Graphs tell your assumed *data story* - and tell you if you should adjust for $Z$.
+
+.pull-left[
+```{r dag-mot1, echo=FALSE, out.width="70%"}
+plot(DAG_Mot1)
+```
+]
+
+.pull-right[
+```{r dag-mot2, echo=FALSE, out.width="70%"}
+plot(DAG_Mot2)
+```
+]
+
+---
+
+## Simpson's Paradox
+
+.center[<iframe width="560" height="315" src="https://www.youtube.com/embed/nGqzoqXZch0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
+
+.footnote[[Rafael Moral: Summary Song #8 - Simpson's Paradox](https://youtu.be/nGqzoqXZch0)]
+
+---
+
+## Why this Matters: Data Literacy
+
+.center[
+```{r dl-framework, out.width='60%', echo=FALSE}
+include_graphics(c("img/DL-Framework.png"))
+```
+]
+
+.footnote[Source: [Schüller (2020)](https://hochschulforumdigitalisierung.de/sites/default/files/dateien/HFD_AP_Nr_53_Data_Literacy_Framework.pdf)]
+
+---
+
+class: center, inverse, middle
+
+# Empirical Study
+
+---
+
+# Survey
+
+Online survey with two randomized experimental factors:
+
+- Context/ Exposure: gender or lifestyle
+
+- Order of task presentation: DAG or table and effect estimation first.
+
+Sample: $n= `r nrow(Conclusion)`$ business psychology students studying while working within a marketplace for scientific studies. As the study program is offered for professionals students may already be in a management position. 
+
+---
+
+# Results: Effect
+
+```{r table2, echo=FALSE, message=FALSE}
+Conclusion %>%
+  group_by(exposure, dag.first) %>%
+  summarise(prop.adjusted = sum(adjusted)/n()) %>%
+  kable()
+```
+
+For both exposures the arguably right answer (unadjusted mean for gender, adjusted mean for lifestyle) is chosen more often if the DAG is presented first.
+
+---
+
+# Results: Model
+
+```{r table3, echo=FALSE, message=FALSE}
+Conclusion %>%
+  group_by(exposure, dag.first) %>%
+  summarise(prop.fork = sum(graph == "Fork")/n()) %>%
+  kable()
+```
+
+For exposure gender setting only a chain is appropriate, whereas the model for lifestyle both might be true with arguably a fork being more plausible.
+
+---
+
+# Results: Consitency
+
+```{r table4, echo=FALSE, message=FALSE}
+Conclusion %>%
+  group_by(exposure, dag.first) %>%
+  summarise(prop.consistent = sum(consistent)/n()) %>%
+  kable()
+```
+
+The consistency of both choices (adjusted or unadjusted mean as estimated effect and covariable management in the middle of a fork or a chain) is rather low
+
+---
+
+class: center, inverse, middle
+
+# Outro
+
+---
+
+## If you just woken up
+
+<br> 
+
+.center[Draw (Causal) Conclusions from Data – Some Evidence]
+
+`r fontawesome("hand-point-right", style = "solid")` Conclusions from data depend on the qualitative assumptions about the data generating process. Data alone is not enough and we should try to make our assumptions as transparent and discussible as possible, and integration of DAGs may be a step in that direction.
+
+---
+
+## It's not a bug, it's a feature
+
+"But the correctness of the (causal) conclusions is based on the correctness of the graph."
+
+--
+
+.center[<iframe src="https://giphy.com/embed/10Jpr9KSaXLchW" width="240" height="188" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
+
+.footnote[[via GIPHY](https://giphy.com/gifs/people-hd-gifsremastered-10Jpr9KSaXLchW), inspiration [@rlmcelreath](https://twitter.com/rlmcelreath/status/1318113949074771968)]
+
+Do you criticize Pythagoras for that you need to know two out of three sides to calculate the third in a right triangle?
+
+---
+
+# The End
+
+.center[Thank you for your attention. Which question should I answer first?]
+
+<br>
+
+- Source and data: `r fontawesome$brands$github`:  [https://github.com/luebby/IASE-Satelite](https://github.com/luebby/IASE-Satelite)
+
+<br>
+´
+- `r fontawesome("envelope", style = "solid")`:  [karsten.luebke@fom.de](<mailto:karsten.luebke@fom.de>)
+- `r fontawesome("twitter", style = "brands")`:  [@luebby42](https://twitter.com/luebby42)
