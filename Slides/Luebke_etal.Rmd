@@ -88,6 +88,8 @@ DAG_Mot2 <- dagify(X ~ Z,
 ```{r data, include=FALSE}
 library(tidyverse)
 library(mosaic)
+library(tidyr)
+library(kableExtra)
 
 Conclusion <- read.csv2("../Data/Conclusion.csv")
 ```
@@ -212,11 +214,18 @@ Sample: $n= `r nrow(Conclusion)`$ business psychology students studying while wo
 
 # Results: Effect
 
+.center[**Proportion who choose adjusted mean:**]
+
 ```{r table2, echo=FALSE, message=FALSE}
 Conclusion %>%
   group_by(exposure, dag.first) %>%
   summarise(prop.adjusted = sum(adjusted)/n()) %>%
-  kable()
+  ungroup() %>%
+  mutate(prop.adjusted = round(prop.adjusted,2)) %>%
+  pivot_wider(id = exposure, names_from = dag.first, values_from = prop.adjusted) %>%
+  rename("table first" =`FALSE`, "dag first" = `TRUE`) %>%
+  kbl() %>%
+  column_spec(1, bold = TRUE)
 ```
 
 For both exposures the arguably right answer (unadjusted mean for gender, adjusted mean for lifestyle) is chosen more often if the DAG is presented first.
@@ -225,11 +234,18 @@ For both exposures the arguably right answer (unadjusted mean for gender, adjust
 
 # Results: Model
 
+.center[**Proportion who choose fork as graphical model:**]
+
 ```{r table3, echo=FALSE, message=FALSE}
 Conclusion %>%
   group_by(exposure, dag.first) %>%
   summarise(prop.fork = sum(graph == "Fork")/n()) %>%
-  kable()
+  ungroup() %>%
+  mutate(prop.fork = round(prop.fork,2)) %>%
+  pivot_wider(id = exposure, names_from = dag.first, values_from = prop.fork) %>%
+  rename("table first" =`FALSE`, "dag first" = `TRUE`) %>%
+  kbl() %>%
+  column_spec(1, bold = TRUE)
 ```
 
 For exposure gender setting only a chain is appropriate, whereas the model for lifestyle both might be true with arguably a fork being more plausible.
@@ -238,11 +254,18 @@ For exposure gender setting only a chain is appropriate, whereas the model for l
 
 # Results: Consitency
 
+.center[**Proportion consistent choices:**]
+
 ```{r table4, echo=FALSE, message=FALSE}
 Conclusion %>%
   group_by(exposure, dag.first) %>%
   summarise(prop.consistent = sum(consistent)/n()) %>%
-  kable()
+  ungroup() %>%
+  mutate(prop.consistent = round(prop.consistent,2)) %>%
+  pivot_wider(id = exposure, names_from = dag.first, values_from = prop.consistent) %>%
+  rename("table first" =`FALSE`, "dag first" = `TRUE`) %>%
+  kbl() %>%
+  column_spec(1, bold = TRUE)
 ```
 
 The consistency of both choices (adjusted or unadjusted mean as estimated effect and covariable management in the middle of a fork or a chain) is rather low
@@ -288,6 +311,6 @@ Do you criticize Pythagoras for that you need to know two out of three sides to 
 - Source and data: `r fontawesome$brands$github`:  [https://github.com/luebby/IASE-Satelite](https://github.com/luebby/IASE-Satelite)
 
 <br>
-´
+
 - `r fontawesome("envelope", style = "solid")`:  [karsten.luebke@fom.de](<mailto:karsten.luebke@fom.de>)
 - `r fontawesome("twitter", style = "brands")`:  [@luebby42](https://twitter.com/luebby42)
