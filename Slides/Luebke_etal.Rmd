@@ -3,7 +3,7 @@ title: "Draw (Causal) Conclusions from Data – Some Evidence"
 subtitle: "IASE 2021 Satellite Conference"  
 author: 
   - "Karsten Lübke, Bianca Krol, Sandra Sülzenbrück"
-date: "23rd June 2021"
+date: "September 2, 2021"
 output:
   xaringan::moon_reader:
     includes:
