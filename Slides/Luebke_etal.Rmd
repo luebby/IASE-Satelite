@@ -1,5 +1,5 @@
 ---
-title: "Draw (Causal) Conclusions from Data – Some Evidence"
+title: "Drawing (Causal) Conclusions from Data – Some Evidence"
 subtitle: "IASE 2021 Satellite Conference"  
 author: 
   - "Karsten Lübke, Bianca Krol, Sandra Sülzenbrück"
@@ -252,7 +252,7 @@ For exposure gender setting only a chain is appropriate, whereas the model for l
 
 ---
 
-# Results: Consitency
+# Results: Consistency
 
 .center[**Proportion consistent choices:**]
 
@@ -278,7 +278,7 @@ class: center, inverse, middle
 
 ---
 
-## If you just woken up
+## If you've just woken up
 
 <br> 
 
