@@ -31,11 +31,24 @@ class: center, middle, inverse, title-slide
 
 
 
+## Opening Act
 
+Next in lineup: Beth Chance, **Multivariable thinking throughout the curriculum**
+
+&gt; Our world is increasingly data centric. Consumers and creators of statistical information must understand complex associations among the many variables that are used to make data-driven decisions.
+
+--
+
+.center[&lt;iframe src="https://giphy.com/embed/AmESvRdXsHFra" width="240" height="160" frameBorder="0" class="giphy-embed" allowFullScreen&gt;&lt;/iframe&gt;]
+
+.footnote[[via GIPHY](https://giphy.com/gifs/reaction-keira-knightley-agreement-AmESvRdXsHFra)]
+
+
+---
 
 class: center, inverse, middle
 
-# Intro
+# An Example
 
 ---
 
@@ -44,10 +57,10 @@ class: center, inverse, middle
 Payment in fictitious company:
 
 
-|                    | Female      | Male        |
+|                    | female      | male        |
 |--------------------|-------------|-------------|
-| **Non-management** | 3100 (n=80) | 3000 (n=60) |
-| **Management**     | 5850 (n=20) | 5500 (n=40) |
+| **non-management** | 3100 (n=80) | 3000 (n=60) |
+| **management**     | 5850 (n=20) | 5500 (n=40) |
 
 
 .footnote[Example adopted from [Paul Hünermund](https://youtu.be/6ZwarKVgAzQ).]
@@ -60,9 +73,9 @@ What do you think is the magnitude of the gender pay gap for women in this compa
 
 &lt;br&gt;
 
-.olive[**A**]: On average: `\(\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350\)`
+.olive[**A**]. On average: `\(\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350\)`
 
-.olive[**B**]: Adjusted for job: `\(\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175\)`
+.olive[**B**]. Adjusted for job: `\(\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175\)`
 
 ---
 
@@ -71,10 +84,10 @@ What do you think is the magnitude of the gender pay gap for women in this compa
 Payment in fictitious company:
 
 
-|                    | Healthy Lifestyle | Unhealthy Lifestyle |
+|                    | healthy lifestyle | unhealthy lifestyle |
 |--------------------|-------------------|---------------------|
-| **Non-management** | 3100 (n=80)       | 3000 (n=60)         |
-| **Management**     | 5850 (n=20)       | 5500 (n=40)         |
+| **non-management** | 3100 (n=80)       | 3000 (n=60)         |
+| **management**     | 5850 (n=20)       | 5500 (n=40)         |
 
 .footnote[Example adopted from [Paul Hünermund](https://youtu.be/6ZwarKVgAzQ).]
 
@@ -87,15 +100,15 @@ What do you think is the magnitude of the healthy pay gap in this company?
 
 &lt;br&gt; 
 
-.olive[**A**]: On average: `\(\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350\)`
+.olive[**A**]. On average: `\(\frac{3100 \cdot 80 + 5850 \cdot 20}{80+20}-\frac{3000 \cdot 60 + 5500 \cdot 40}{60+40}=-350\)`
 
-.olive[**B**]: Adjusted for job: `\(\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175\)`
+.olive[**B**]. Adjusted for job: `\(\frac{(3100-3000) \cdot (80+60)}{200}-\frac{(5850-5500) \cdot(20+40)}{200}=+175\)`
 
 ---
 
 ## Different Data Stories
 
-Directed Acyclic Graphs tell your assumed *data story* - and tell you if you should adjust for `\(Z\)`.
+Directed Acyclic Graphs (DAG) tell your assumed *data story* - and tell you if you should adjust for `\(Z\)`.
 
 .pull-left[
 &lt;img src="Luebke_etal_files/figure-html/dag-mot1-1.png" width="70%" style="display: block; margin: auto;" /&gt;
@@ -111,11 +124,11 @@ Directed Acyclic Graphs tell your assumed *data story* - and tell you if you sho
 
 .center[&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/nGqzoqXZch0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;]
 
-.footnote[[Rafael Moral: Summary Song #8 - Simpson's Paradox](https://youtu.be/nGqzoqXZch0)]
+.footnote[[Rafael Moral: Summary Song #8 - Simpson's Paradox](https://youtu.be/nGqzoqXZch0) (Winner of CAUSE 2021 A-µ-Sing Competition)]
 
 ---
 
-## Why this Matters: Data Literacy
+## Why this matters: Data Literacy
 
 .center[
 &lt;img src="img/DL-Framework.png" width="60%" style="display: block; margin: auto;" /&gt;
@@ -135,9 +148,9 @@ class: center, inverse, middle
 
 Online survey with two randomized experimental factors:
 
-- Context/ Exposure: gender or lifestyle
+- Context / Exposure: gender or lifestyle
 
-- Order of task presentation: DAG or table and effect estimation first.
+- Order of task presentation: DAG or table and effect estimation first
 
 Sample: `\(n= 187\)` business psychology students studying while working within a marketplace for scientific studies. As the study program is offered for professionals students may already be in a management position. No formal training in causal inference.
 

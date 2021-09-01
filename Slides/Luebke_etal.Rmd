@@ -94,11 +94,24 @@ library(kableExtra)
 Conclusion <- read.csv2("../Data/Conclusion.csv")
 ```
 
+## Opening Act
 
+Next in lineup: Beth Chance, **Multivariable thinking throughout the curriculum**
+
+> Our world is increasingly data centric. Consumers and creators of statistical information must understand complex associations among the many variables that are used to make data-driven decisions.
+
+--
+
+.center[<iframe src="https://giphy.com/embed/AmESvRdXsHFra" width="240" height="160" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>]
+
+.footnote[[via GIPHY](https://giphy.com/gifs/reaction-keira-knightley-agreement-AmESvRdXsHFra)]
+
+
+---
 
 class: center, inverse, middle
 
-# Intro
+# An Example
 
 ---
 
@@ -178,7 +191,7 @@ plot(DAG_Mot2)
 
 .center[<iframe width="560" height="315" src="https://www.youtube.com/embed/nGqzoqXZch0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>]
 
-.footnote[[Rafael Moral: Summary Song #8 - Simpson's Paradox](https://youtu.be/nGqzoqXZch0)]
+.footnote[[Rafael Moral: Summary Song #8 - Simpson's Paradox](https://youtu.be/nGqzoqXZch0) (Winner of CAUSE 2021 A-µ-Sing Competition)]
 
 ---
 
