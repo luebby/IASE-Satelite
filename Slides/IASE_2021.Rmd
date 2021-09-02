@@ -315,15 +315,25 @@ Do you criticize Pythagoras for that you need to know two out of three sides to 
 
 ---
 
-# The End
+## The End
 
-.center[Thank you for your attention. Which question should I answer first?]
+.center[`r icon_style(fontawesome("heart", style = "solid"), fill = "red")` Thank you for your participation `r icon_style(fontawesome("heart", style = "solid"), fill = "red")`]
 
 <br>
 
-- Source and data: `r fontawesome$brands$github`:  [https://github.com/luebby/IASE-Satelite](https://github.com/luebby/IASE-Satelite)
+- `r fontawesome$brands$github` (Source and data):  [https://github.com/luebby/IASE-Satelite](https://github.com/luebby/IASE-Satelite)
 
 <br>
 
 - `r fontawesome("envelope", style = "solid")`:  [karsten.luebke@fom.de](<mailto:karsten.luebke@fom.de>)
 - `r fontawesome("twitter", style = "brands")`:  [@luebby42](https://twitter.com/luebby42)
+
+---
+
+## J3 Lineup
+
+- Beth Chance: **Multivariable thinking throughout the curriculum**
+
+- Douglas Whitaker: **The search for validity evidence for instruments in statistics education: preliminary findings**
+
+- Dorcas Okewole: **Assessment Question Type in A Statistics Course for non Majors: Analysis of Students’ Preference**
